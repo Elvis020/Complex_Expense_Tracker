@@ -9,19 +9,19 @@ const App = () => {
   return (
     <Grid
       container
-      spacing={2}
+      spacing={1}
       className={trackerUI.grid}
       alignItems="center"
       justify="center"
       style={{ height: "100vh" }}
     >
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={3}>
         <Details title="Income" />
       </Grid>
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={12} md={4}>
         <Main />
       </Grid>
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={3}>
         <Details title="Expense" />
       </Grid>
     </Grid>

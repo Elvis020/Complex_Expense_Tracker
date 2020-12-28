@@ -8,12 +8,14 @@ import {
   Divider,
 } from "@material-ui/core";
 import useStyles from "./styles";
+import Form from "./Form";
+import List from "./List";
 
 const Main = () => {
   const trackerUI = useStyles();
   return (
     <Card className={trackerUI.root}>
-      <CardHeader title="Expense Tracker" subheader="Powered by Speechly🔈" />
+      <CardHeader title="Expense Tracker🤑" subheader="Powered by Speechly🔈" />
       <CardContent>
         <Typography align="center" variant="h5">
           Total Balance GH500
@@ -26,13 +28,13 @@ const Main = () => {
           Try saying: Add Income for GH100 in category Salary for Monday...
         </Typography>
         <Divider />
-        {/* Form Component */}
+        <Form />
       </CardContent>
 
       <CardContent className={trackerUI.cardContent}>
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item xs={12}>
-            {/* <List /> */}
+            <List />
           </Grid>
         </Grid>
       </CardContent>
