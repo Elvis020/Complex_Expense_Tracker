@@ -16,6 +16,7 @@ import useStyles from "./styles";
 
 const List = () => {
   const trackerUI = useStyles();
+  const {deleteTransaction}  = useContext(ExpenseTrackerContext);
 
   const transactions = [
     {
