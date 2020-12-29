@@ -93,14 +93,14 @@ const Form = () => {
   }, [segment]);
 
   return (
-    <Grid container className={trackerUI.mobile} spacing={2}>
+    <Grid container  spacing={1}>
       <SnackbarComponent open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography gutterBottom align="center" variant="subtitle2">
           {segment && segment.words.map((w) => w.value).join(" ")}
         </Typography>
       </Grid>
-      <Grid item sm={6}>
+      <Grid item xs={12} className={trackerUI.mobile}>
         <FormControl fullWidth>
           <InputLabel>Type</InputLabel>
           <Select
@@ -112,7 +112,7 @@ const Form = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={6}>
+      <Grid item xs={12}>
         <FormControl fullWidth>
           <InputLabel>Category</InputLabel>
           <Select
@@ -130,7 +130,7 @@ const Form = () => {
         </FormControl>
       </Grid>
 
-      <Grid item sm={6}>
+      <Grid item xs={12}>
         <TextField
           value={formData.amount}
           onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
@@ -139,7 +139,7 @@ const Form = () => {
           fullWidth
         />
       </Grid>
-      <Grid item sm={6}>
+      <Grid item xs={12}>
         <TextField
           value={formData.date}
           onChange={(e) =>

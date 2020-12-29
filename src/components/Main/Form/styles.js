@@ -9,10 +9,4 @@ export default makeStyles((theme) => ({
   button: {
     marginTop: 20,
   },
-  mobile: {
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      marginLeft: '2em',
-    },
-  },
 }));
