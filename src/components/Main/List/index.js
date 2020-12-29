@@ -16,31 +16,8 @@ import useStyles from "./styles";
 
 const List = () => {
   const trackerUI = useStyles();
-  const {deleteTransaction}  = useContext(ExpenseTrackerContext);
+  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
-  const transactions = [
-    {
-      id: 1,
-      type: "Income",
-      category: "Salary",
-      amount: 50,
-      date: "Wed Dec, 16",
-    },
-    {
-      id: 2,
-      type: "Expense",
-      category: "Pets",
-      amount: 100,
-      date: "Wed Dec, 18",
-    },
-    {
-      id: 3,
-      type: "Income",
-      category: "Business",
-      amount: 150,
-      date: "Wed Dec, 20",
-    },
-  ];
   return (
     <MUIList dense={false} className={trackerUI.list}>
       {transactions.map((transac) => {
@@ -64,7 +41,7 @@ const List = () => {
               />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete" onClick="">
-                  <Delete />
+                  <Delete onClick={() => deleteTransaction(id)} />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>

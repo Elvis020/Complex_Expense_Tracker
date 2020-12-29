@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   TextField,
   Typography,
@@ -10,27 +10,34 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import useStyles from "./styles";
-import {ExpenseTrackerContext} from '../../../Context';
-import {v4 as uuidv4} from 'uuid';
+import { ExpenseTrackerContext } from "../../../Context";
+import { v4 as uuidv4 } from "uuid";
+import { incomeCategories, expenseCategories } from "../../../data/Categories";
+import formatDate from "../../../Utils/formatDate";
 
 const initialState = {
   amount: "",
   category: "",
   type: "Income",
-  date: new Date(),
+  date: formatDate(new Date()),
 };
 
 const Form = () => {
   const [formData, setFormData] = useState(initialState);
   const trackerUI = useStyles();
+  const selectedCategory =
+    (formData.type === "Income" && incomeCategories) || expenseCategories;
 
-  const {addTransaction} = useContext(ExpenseTrackerContext)
-  const createTransaction =() => {
-    const transaction = {...formData, amount:Number(formData.amount), id:uuidv4()}
+  const { addTransaction } = useContext(ExpenseTrackerContext);
+  const createTransaction = () => {
+    const transaction = {
+      ...formData,
+      amount: Number(formData.amount),
+      id: uuidv4(),
+    };
     addTransaction(transaction);
     setFormData(initialState);
-  }
-
+  };
 
   return (
     <Grid container spacing={2}>
@@ -60,8 +67,11 @@ const Form = () => {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <MenuItem value="Business">Business</MenuItem>
-            <MenuItem value="Salary">Salary</MenuItem>
+            {selectedCategory.map((category, index) => (
+              <MenuItem key={index} value={category.type}>
+                {category.type}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -78,14 +88,15 @@ const Form = () => {
       <Grid item sm={6}>
         <TextField
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, date: formatDate(e.target.value) })
+          }
           id="date"
           InputLabelProps={{
             shrink: true,
           }}
           type="date"
           label="Date"
-          fullWidth
         />
       </Grid>
       <Button
@@ -94,6 +105,7 @@ const Form = () => {
         color="primary"
         fullWidth
         onClick={createTransaction}
+        disabled={!formData.amount || !formData.category}
       >
         Create
       </Button>
