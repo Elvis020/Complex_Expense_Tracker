@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardHeader,
@@ -10,18 +10,25 @@ import {
 import useStyles from "./styles";
 import Form from "./Form";
 import List from "./List";
-
+import { ExpenseTrackerContext } from "../../Context";
 const Main = () => {
   const trackerUI = useStyles();
+  const { balance } = useContext(ExpenseTrackerContext);
   return (
     <Card className={trackerUI.root}>
       <CardHeader title="Expense Tracker🤑" subheader="Powered by Speechly🔈" />
       <CardContent>
         <Typography align="center" variant="h5">
-          Total Balance GH500
+          Total Balance GH{balance}
         </Typography>
         <Typography
-          style={{ lineHeight: "1.5em", marginTop: "20px" }}
+          style={{
+            lineHeight: "1.5em",
+            marginTop: "20px",
+            fontSize: "14px",
+            fontStyle: "italic",
+            fontFamily: "cursive",
+          }}
           variant="subtitle1"
         >
           {/* InfoCard Component */}
@@ -32,7 +39,7 @@ const Main = () => {
       </CardContent>
 
       <CardContent className={trackerUI.cardContent}>
-        <Grid  spacing={2} >
+        <Grid spacing={2}>
           <Grid item xs={12}>
             <List />
           </Grid>
