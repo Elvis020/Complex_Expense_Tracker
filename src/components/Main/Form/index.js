@@ -104,7 +104,7 @@ const Form = () => {
         variant="outlined"
         color="primary"
         fullWidth
-        onClick={createTransaction}
+        onClick={() => createTransaction()}
         disabled={!formData.amount || !formData.category}
       >
         Create
