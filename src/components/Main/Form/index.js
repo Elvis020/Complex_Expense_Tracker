@@ -93,7 +93,7 @@ const Form = () => {
   }, [segment]);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container className={trackerUI.mobile} spacing={2}>
       <SnackbarComponent open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography gutterBottom align="center" variant="subtitle2">

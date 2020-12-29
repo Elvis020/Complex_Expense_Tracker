@@ -10,6 +10,7 @@ import {
 import useStyles from "./styles";
 import Form from "./Form";
 import List from "./List";
+import InfoCard from '../InfoCard';
 import { ExpenseTrackerContext } from "../../Context";
 const Main = () => {
   const trackerUI = useStyles();
@@ -32,9 +33,10 @@ const Main = () => {
           variant="subtitle1"
         >
           {/* InfoCard Component */}
-          Try saying: Add Income for GH100 in category Salary for Monday...
+          <InfoCard />
+          
         </Typography>
-        <Divider />
+        <Divider className={trackerUI.divider} />
         <Form />
       </CardContent>
 
