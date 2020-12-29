@@ -32,7 +32,7 @@ const Main = () => {
       </CardContent>
 
       <CardContent className={trackerUI.cardContent}>
-        <Grid container>
+        <Grid  spacing={2} >
           <Grid item xs={12}>
             <List />
           </Grid>
